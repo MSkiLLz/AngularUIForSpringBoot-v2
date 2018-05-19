@@ -1,0 +1,18 @@
+<div *ngIf="user">
+  <h2>{{ user.userName | uppercase }} Details</h2>
+  <div><span>id: </span>{{user.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="user.userName" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <!-- <a routerLink="/tasks">Assign Tasks</a> -->
+    <label>Assign Task</label>
+    <input #taskName  placeholder="enter task"/><button type="submit" class="btn btn-primary" (click)="addTask(taskName.value,user.id)">add task</button>
+  </div>
+  <br>
+  <h3 *ngIf = "isAdded" >{{confirmationString}}</h3>
+  <button type="submit" class="btn btn-primary" (click)="goBack()">go back</button>
+  <button type="submit" class="btn btn-primary" (click)="editUser(user)">save</button>
+</div>

@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+
+    <div class="tasks" *ngIf="tasksList">
+      <table class="table">
+        <thead class="h">
+          <tr class="h">
+            <th class="h">Title</th>
+            <th class="h">Assigned User</th>
+            <th class="h">Description</th>
+            <th class="h">Status</th>
+            <th class="h">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="task" (dblclick)="editTask(task)" *ngFor="let task of tasksList">
+
+            <ng-container *ngIf="!editTasks.includes(task); else editTD">
+              <td>{{task.name}}</td>
+              <td>{{task.assignedUser.userName}}</td>
+              <td>{{task.description}}</td>
+              <td>{{task.status}}</td>
+            </ng-container>
+
+            <ng-template #editTD>
+                <td><input type="text" name="title" id="title" (keypress)="submitTask($event, task)" [(ngModel)]="task.name" placeholder="Title" class="form-control"></td>
+                <td><input type="text" name="assignedUser" id="assignedUser" (keypress)="submitTask($event, task)" [(ngModel)]="task.assignedUser.userName" placeholder="User" class="form-control"></td>
+                <td><input type="text" name="description" id="description" (keypress)="submitTask($event, task)" [(ngModel)]="task.description" placeholder="Description"
+                    class="form-control"></td>
+                <td>
+                  <input type="text" name="status" id="status" (keypress)="submitTask($event, task)" [(ngModel)]="task.status" placeholder="Status" class="form-control" readonly>
+                </td>
+            </ng-template>
+
+            <td class="o">
+              <button title="not started" class="btn btn-danger" (click)="notStarted(task)">
+                  <i  class="fa fa-battery-empty"></i>
+              </button>
+              <button title="in progress" class="btn btn-warning" (click)="inProgress(task)">
+                <i  class="fa fa-battery-half"></i>
+              </button>
+              <button title="completed" class="btn btn-success" (click)="doneTask(task)">
+                <i  class="fa fa-battery-full"></i>
+              </button>
+              <button title="edit task" class="btn btn-primary" (click)="editTask(task)">
+                  <i  class="fa fa-pencil"></i>
+                </button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- <form>
+      <div class="form-row">
+
+        <div class="col-md-5">
+          <input type="text" name="title" id="title" [(ngModel)]="newTask.title" placeholder="Title" class="form-control">
+        </div>
+        <div class="col-md-5">
+          <input name="description" id="description" [(ngModel)]="newTask.description" placeholder="Description" class="form-control"
+            id="description">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+        </div>
+      </div>
+    </form> -->
+  </div>
+  <div class="col-md-2">
+    
+  </div>
+</div>
