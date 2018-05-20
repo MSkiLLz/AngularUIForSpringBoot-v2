@@ -16,6 +16,7 @@ import { NotStartedTaskComponent} from './task/notstarted-task.component';
 import { InProgressTaskComponent} from './task/inprogress-task.component';
 import { CompleteTaskComponent} from './task/complete-task.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { TaskStatusPipe } from './task/task-status.pipe';
 
 const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent },
@@ -40,7 +41,8 @@ const routes: Routes = [
     IncompleteTaskComponent,
     NotStartedTaskComponent,
     InProgressTaskComponent,
-    CompleteTaskComponent
+    CompleteTaskComponent,
+    TaskStatusPipe
   ],
   imports: [
     BrowserModule,

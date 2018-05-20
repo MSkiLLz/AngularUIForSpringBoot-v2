@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 
 
 import 'rxjs/add/operator/map';
+import { TaskStatus } from '../models/task-status.model';
 
 @Injectable()
 export class TaskService {

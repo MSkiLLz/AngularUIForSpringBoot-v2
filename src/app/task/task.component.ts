@@ -1,7 +1,7 @@
 import { Response } from '@angular/http';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
-import { TaskStatus } from '../models/task-status.model';
+import { TaskStatus} from '../models/task-status.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -20,6 +20,7 @@ export class TaskComponent implements OnInit {
   tasksList: Task[];
   editTasks: Task[] = [];
 
+
   ngOnInit(): void {
     this.taskService.getTasks()
       .subscribe(tasks => {
@@ -28,6 +29,7 @@ export class TaskComponent implements OnInit {
       })
   }
 
+  
 
   create(task: Task) {
     this.taskService.createTask(this.newTask, task._id)

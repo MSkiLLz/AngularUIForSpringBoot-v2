@@ -29,10 +29,10 @@ export class UserComponent implements OnInit {
 
 
   addUser(userName: string) {
-    this.userService.createUser({ userName } as User)
+    this.userService.createUser(userName)
       .subscribe((res) => {
-        this.usersList.push(res.data)
-        this.newUser = new User()
+        this.usersList.push(res)
+        console.log(res)
       })
   }
 
