@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Rx';
 
 
 
-describe('TaskService', () => {
+describe('TaskService: getTasks', () => {
   let service: TaskService;
   let taskService: TaskService;
   let mockTaskService: TaskService;
@@ -47,8 +47,8 @@ describe('TaskService', () => {
           provide: HttpClient,
           deps: [MockBackend, BaseRequestOptions],
           useFactory:
-            (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
-              return new Http(backend, defaultOptions);
+            (backend, options) => {
+              return new Http(backend, options);
             }
        }
       ]
@@ -86,19 +86,21 @@ describe('TaskService', () => {
 
   it('should return tasks', fakeAsync(() => {
     let response = {
-     tasks: [{ "_id": 1, "name": 'A', "description":"description", "status": TaskStatus.notstarted, "assignedUser": new User() }]
+    "resultCount":1,
+     "results": [{ "_id": 1, "name": 'A', "description":"description", "status": TaskStatus.notstarted, "assignedUser": new User() }]
     };
 
     mockBackend.connections.subscribe( connection => {
-      connection.mockRespond(response)
-    });
+      connection.mockRespond(new Response(<ResponseOptions>{
+        body: JSON.stringify(response)
+    }));
+  });
 
     taskService.getTasks();
     tick();
 
     
   }))
-
 
   
 
