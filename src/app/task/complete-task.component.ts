@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
 
 @Component({
-  selector: 'app-incomplete-task',
+  selector: 'app-complete-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
@@ -14,6 +15,7 @@ export class CompleteTaskComponent implements OnInit {
   ) { }
   tasksList: Task[];
   editTasks: Task[] = [];
+  showOptions: boolean = false;
 
   ngOnInit() {
     this.taskService.getTasksCompleted()

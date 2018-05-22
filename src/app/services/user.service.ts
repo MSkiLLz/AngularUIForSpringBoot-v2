@@ -1,8 +1,9 @@
-import { User }  from '../models/user.model';
 import { Observable } from 'rxjs/Rx';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Response} from '@angular/http';
 import { Injectable } from '@angular/core';
+
+import { User }  from '../models/user.model';
 
 
 import 'rxjs/add/operator/map';
@@ -53,7 +54,7 @@ export class UserService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 

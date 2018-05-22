@@ -1,7 +1,9 @@
 import { Response } from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+
 import { UserService } from '../services/user.service';
 import {User} from '../models/user.model';
-import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'user-root',

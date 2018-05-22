@@ -1,8 +1,10 @@
 import { Response } from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
 import { TaskStatus} from '../models/task-status.model';
-import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-task',
@@ -19,7 +21,7 @@ export class TaskComponent implements OnInit {
 
   tasksList: Task[];
   editTasks: Task[] = [];
-
+  showOptions: boolean = true;
 
   ngOnInit(): void {
     this.taskService.getTasks()

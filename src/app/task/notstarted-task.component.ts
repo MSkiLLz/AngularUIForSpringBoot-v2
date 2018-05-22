@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
 
 @Component({
-  selector: 'app-incomplete-task',
+  selector: 'app-notstarted-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })

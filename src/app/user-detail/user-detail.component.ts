@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import {User} from '../models/user.model';
 import {Task} from '../models/task.model';
 import { UserService } from '../services/user.service';
 import { TaskService } from '../services/task.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-user-detail',
@@ -42,11 +44,6 @@ export class UserDetailComponent implements OnInit {
   editUser(user) {
     debugger
     console.log(user)
-    // if(this.usersList.includes(user)){
-      // if(!this.editUsers.includes(user)){
-        // this.editUsers.push(user)
-      // }else{
-        // this.editUsers.splice(this.editUsers.indexOf(user), 1)
         const id = +this.route.snapshot.paramMap.get('id');
         this.userService.editUser(id,user.userName).subscribe(res => {
           console.log('Update Succesful')
@@ -54,8 +51,6 @@ export class UserDetailComponent implements OnInit {
           this.editUser(user)
           console.error('Update Unsuccesful')
         })
-      // }
-    // }
   }
 
   addTask(taskName: string) {

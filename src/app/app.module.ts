@@ -16,7 +16,7 @@ import { NotStartedTaskComponent} from './task/notstarted-task.component';
 import { InProgressTaskComponent} from './task/inprogress-task.component';
 import { CompleteTaskComponent} from './task/complete-task.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { TaskStatusPipe } from './task/task-status.pipe';
+import { TaskStatusPipe } from './shared/task-status.pipe';
 
 const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent },
@@ -27,8 +27,6 @@ const routes: Routes = [
   { path: "tasks/complete", component: CompleteTaskComponent },
   { path: "users", component: UserComponent },
   { path: '', redirectTo: '/users', pathMatch: 'full' }
-  
-  // { path: 'detail/:id', component: HeroDetailComponent },
   
 ];
 

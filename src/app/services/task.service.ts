@@ -1,8 +1,9 @@
-import Task from '../models/task.model';
 import { Observable } from 'rxjs/Rx';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Response} from '@angular/http';
 import { Injectable } from '@angular/core';
+
+import Task from '../models/task.model';
 
 
 import 'rxjs/add/operator/map';
@@ -13,7 +14,7 @@ export class TaskService {
 
   api_url = 'http://localhost:8080';
   taskUrl = `${this.api_url}/tasks`;
-
+  results: Task[];
   constructor(
     private http: HttpClient
   ) { }
@@ -26,6 +27,7 @@ export class TaskService {
   getTasks(): Observable<Task[]>{
     return this.http.get(this.taskUrl)
     .map(res  => {
+      this.results = res as Task[]
       return res as Task[];
     })
   }
@@ -63,7 +65,6 @@ export class TaskService {
   }
 
   editTask(task:Task, id: number){
-   // /tasks/update/users/{userId}
     let editUrl = `${this.taskUrl}`+'/update/users/' + `${id}`
     return this.http.put(editUrl, task);
   }
@@ -77,7 +78,7 @@ export class TaskService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 
